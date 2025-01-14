@@ -1,4 +1,5 @@
 import numpy as np
+from collections import Counter
 
 def pca(data: np.ndarray, k: int) -> np.ndarray:
 	'''Principal Components Analysis
@@ -82,6 +83,46 @@ def lda(data: np.ndarray, y: np.array, k: int) -> np.ndarray
 	top_indices = eigen_values.argsort()[::-1]
 	top_k_components = eigen_vectors[:,top_indices[:k]]
 
+	# Project the data
 	lda_data = z_data.dot(top_k_components)
 
 	return lda_data
+
+
+def tf_idf(corpus: list[list[str]], query: list[str]) -> list[list[float]]:
+	'''Compute TF-IDF scores
+
+ 	Args:
+  		corpus (list): List of documents, each a list of words
+    		query (list): List of words to query
+
+	Returns:
+ 		tf_idfs (lis): List of documents, each containing TF-IDF scores for each word
+   	'''
+	# Create empty Term Frequency Matrix
+	tf = np.zeros((len(corpus), len(query)))
+
+	# Iterate over documents
+	for doc_ix, doc in enumerate(corpus):
+		# Calculate word frequencies
+		term_count = Counter(doc)
+
+		# Iterate over words
+		for word_ix, word in enumerate(query):
+			# Get word count of token
+			word_count = term_count.get(word, 0)
+			total_terms = sum(term_count.values())
+
+			# Compute Term Frequency
+			tf[doc_ix, word_ix] = word_count / total_terms
+
+	# Compute document frequencies of words
+	len_corpus = 1 + len(corpus)
+	len_df = 1 + np.count_nonzero(tf > 0, axis=0)
+
+	# Compute Inverse document frequency
+	idf = np.log(len_corpus / len_df) + 1
+
+	# Compute TF-IDF
+	return tf * idf
+
