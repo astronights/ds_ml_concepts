@@ -126,3 +126,53 @@ def tf_idf(corpus: list[list[str]], query: list[str]) -> list[list[float]]:
 	# Compute TF-IDF
 	return tf * idf
 
+
+def gradient_descent_with_regularization(X: np.ndarray, y: np.array, reg_strength: float = 0.1, learning_rate: float = 0.01, max_iter: int = 1000, tol: float = 1e-4, reg='l1'):
+	'''Gradient Descent with Regularization
+
+ 	Args:
+  		X (np.ndarray): Input data
+    		y (np.array): Labels
+      		reg_strength (float): Regularization strength
+		learning_rate (float): Learning rate
+  		max_iter (int): Maximum iterations
+    		tol (float): Tolerance
+      		reg (str): 'L1' or 'L2' regularization
+
+	Returns:
+ 		coefs (tuple): Weights and biases
+   	'''
+	# Read dimensions
+	n_samples, n_feats = X.shape
+
+	# Initialize co-efficients
+	weights = np.zeros(n_feats)
+	bias = 0
+    
+    	for i in range(max_iter):
+		# Compute Predictions
+		Y-hat = X.dot(weights) + bias
+
+		# Compute Error
+		error = y_hat - y
+
+		# Calculate weight gradient
+		if reg == 'l1':
+			# Lasso Gradient
+			w_grad = (1 / n_samples) * X.T.dot(error) + reg_strength * np.sign(weights)
+		elif reg == 'l2:
+			# Ridge Gradient
+			w_grad = (1 / n_samples) * X.T.dot(error) + 2 * reg_strength * weights
+
+		# Calculate bias gradient
+		b_grad = (1 / n_samples) * np.sum(error)
+
+		# Update weights and biases
+		weights -= learning_rate * w_grad
+		bias -= learning_rate * b_grad
+
+        	# Convergence check
+        	if np.linalg.norm(grad_w) < tol and abs(grad_b) < tol:
+            		break
+
+    	return weights, bias
