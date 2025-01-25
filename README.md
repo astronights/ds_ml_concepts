@@ -7,10 +7,8 @@ Here are a couple of PDFs to serve as quick refreshers or resources to revise im
 
 - Probability and Statistics
 - Machine Learning
+- Advanced Machine Learning (More Complex algorithms and usage): **Work In Progress**
 - Python
-
-
-NOTE: The Machine Learning component can be a bit high level as it would be incredibly verbose to include formulae for all algorithms. In several sections, it only lists down concepts expecting the reader to attain familiarity with them.
 
 ## Contributions
 
