@@ -7,7 +7,8 @@ Here are a couple of PDFs to serve as quick refreshers or resources to revise im
 
 - Probability and Statistics
 - Machine Learning
-- Advanced Machine Learning (More Complex algorithms and usage): **Work In Progress**
+- Advanced Machine Learning (Deep Learning, Natural Language Processing, Time Series Forecasting)
+- Applied Modelling **Work in Progress**
 - Python
 
 ## Contributions
