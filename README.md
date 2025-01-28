@@ -6,8 +6,8 @@ Here are a couple of PDFs to serve as quick refreshers or resources to revise im
 ## Guides
 
 - Probability and Statistics
-- Machine Learning
-- Advanced Machine Learning (Deep Learning, Natural Language Processing, Time Series Forecasting)
+- Machine Learning I
+- Machine Learning II (Deep Learning, Natural Language Processing, Time Series Forecasting)
 - Applied Modelling **Work in Progress**
 - Python
 
